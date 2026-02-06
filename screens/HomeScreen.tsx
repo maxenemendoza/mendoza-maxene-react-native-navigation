@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
+  Image,
   FlatList,
   TouchableOpacity,
   SafeAreaView,
   StatusBar,
   ListRenderItem,
+  TextInput,
+  Platform,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useCart } from '../context/CartContext';
@@ -24,15 +27,30 @@ interface HomeScreenProps {
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { addToCart, getTotalItems } = useCart();
   const { theme, isDarkMode, toggleTheme } = useTheme();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleAddToCart = (product: Product): void => {
     addToCart(product);
   };
 
+  // Filter products based on search query
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    product.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const renderProduct: ListRenderItem<Product> = ({ item }) => (
     <View style={[styles.productCard, { backgroundColor: theme.cardBackground, borderColor: theme.border }]}>
       <View style={styles.productImageContainer}>
-        <Text style={styles.productEmoji}>{item.image}</Text>
+        {typeof item.image === 'string' ? (
+          <Text style={styles.productEmoji}>{item.image}</Text>
+        ) : (
+          <Image
+            source={item.image}
+            style={styles.productImage}
+            resizeMode="cover"
+          />
+        )}
       </View>
       <View style={styles.productInfo}>
         <Text style={[styles.productName, { color: theme.text }]}>{item.name}</Text>
@@ -60,14 +78,18 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={theme.background}
+        translucent={false}
       />
+      
+      {/* Android Status Bar Spacer */}
+      {Platform.OS === 'android' && <View style={{ height: StatusBar.currentHeight }} />}
       
       {/* Header */}
       <View style={[styles.header, { borderBottomColor: theme.border }]}>
         <View>
-          <Text style={[styles.headerTitle, { color: theme.text }]}>TechShop</Text>
+          <Text style={[styles.headerTitle, { color: theme.text }]}>Sonny Angel PH</Text>
           <Text style={[styles.headerSubtitle, { color: theme.textSecondary }]}>
-            Premium gadgets & accessories
+            Sonny Angel PH Official Online Store
           </Text>
         </View>
         <TouchableOpacity
@@ -78,13 +100,41 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
+      {/* Search Bar */}
+      <View style={[styles.searchContainer, { backgroundColor: theme.background }]}>
+        <View style={[styles.searchBar, { backgroundColor: theme.cardBackground, borderColor: theme.border }]}>
+          <Text style={styles.searchIcon}>🔍</Text>
+          <TextInput
+            style={[styles.searchInput, { color: theme.text }]}
+            placeholder="Search products..."
+            placeholderTextColor={theme.textSecondary}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+          {searchQuery.length > 0 && (
+            <TouchableOpacity onPress={() => setSearchQuery('')}>
+              <Text style={[styles.clearIcon, { color: theme.textSecondary }]}>✕</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      </View>
+
       {/* Products List */}
       <FlatList
-        data={products}
+        data={filteredProducts}
         renderItem={renderProduct}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyIcon}>🔍</Text>
+            <Text style={[styles.emptyText, { color: theme.text }]}>No products found</Text>
+            <Text style={[styles.emptySubtext, { color: theme.textSecondary }]}>
+              Try searching with different keywords
+            </Text>
+          </View>
+        }
       />
 
       {/* Go to Cart Button */}

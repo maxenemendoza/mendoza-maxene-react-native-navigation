@@ -45,22 +45,31 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
+    alignItems: 'center',
+    gap: 12, 
   },
   itemImageContainer: {
-    width: 80,
-    height: 80,
-    borderRadius: 12,
-    backgroundColor: 'rgba(255, 107, 107, 0.05)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 16,
-  },
+  width: 80,
+  height: 80,
+  borderRadius: 10,
+  backgroundColor: "#f2f2f2", // 👈 helps visually
+  overflow: "hidden",
+  justifyContent: "center",
+  alignItems: "center",
+},
+
+itemImage: {
+  width: "100%",
+  height: "100%",
+},
+
   itemEmoji: {
-    fontSize: 40,
+    fontSize: 36,
   },
   itemDetails: {
     flex: 1,
     justifyContent: 'center',
+    paddingRight: 12,
   },
   itemName: {
     fontSize: 16,
@@ -78,12 +87,13 @@ export const styles = StyleSheet.create({
   quantityContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    minWidth: 50,
   },
   quantityButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -95,7 +105,7 @@ export const styles = StyleSheet.create({
   quantity: {
     fontSize: 18,
     fontWeight: '700',
-    marginVertical: 8,
+    marginVertical: 10,
     minWidth: 30,
     textAlign: 'center',
   },

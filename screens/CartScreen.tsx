@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View,
   Text,
+  Image,
   FlatList,
   TouchableOpacity,
   SafeAreaView,
@@ -27,7 +28,15 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
   const renderCartItem: ListRenderItem<CartItem> = ({ item }) => (
     <View style={[styles.cartItem, { backgroundColor: theme.cardBackground, borderColor: theme.border }]}>
       <View style={styles.itemImageContainer}>
-        <Text style={styles.itemEmoji}>{item.image}</Text>
+        {typeof item.image === 'string' ? (
+          <Text style={styles.itemEmoji}>{item.image}</Text>
+        ) : (
+          <Image 
+            source={item.image}
+            style={styles.itemImage}
+            resizeMode="cover"
+          />
+        )}
       </View>
       
       <View style={styles.itemDetails}>
