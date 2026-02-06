@@ -72,7 +72,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         </Text>
         <View style={styles.productFooter}>
           <Text style={[styles.productPrice, { color: theme.primary }]}>
-            ${item.price.toFixed(2)}
+            PHP {item.price.toFixed(2)}
           </Text>
           <TouchableOpacity
             style={[styles.addButton, { backgroundColor: theme.primary }]}

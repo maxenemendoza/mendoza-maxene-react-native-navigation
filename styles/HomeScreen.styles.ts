@@ -13,11 +13,11 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: "900",
   },
   headerSubtitle: {
-    fontSize: 12,
+    fontSize: 14,
     marginTop: 4,
   },
   themeToggle: {

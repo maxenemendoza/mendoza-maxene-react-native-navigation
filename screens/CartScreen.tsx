@@ -53,10 +53,10 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
           {item.name}
         </Text>
         <Text style={[styles.itemPrice, { color: theme.primary }]}>
-          ${item.price.toFixed(2)} each
+          PHP {item.price.toFixed(2)} each
         </Text>
         <Text style={[styles.itemTotal, { color: theme.textSecondary }]}>
-          Total: ${(item.price * item.quantity).toFixed(2)}
+          Total: PHP {(item.price * item.quantity).toFixed(2)}
         </Text>
       </View>
 
@@ -158,7 +158,7 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
                 Total Amount:
               </Text>
               <Text style={[styles.totalAmount, { color: theme.primary }]}>
-                ${getTotalPrice().toFixed(2)}
+                PHP {getTotalPrice().toFixed(2)}
               </Text>
             </View>
 

@@ -63,10 +63,10 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
         </View>
         <View style={styles.priceInfo}>
           <Text style={[styles.itemPrice, { color: theme.textSecondary }]}>
-            ${item.price.toFixed(2)} × {item.quantity}
+            PHP {item.price.toFixed(2)} × {item.quantity}
           </Text>
           <Text style={[styles.itemTotal, { color: theme.primary }]}>
-            ${(item.price * item.quantity).toFixed(2)}
+            PHP {(item.price * item.quantity).toFixed(2)}
           </Text>
         </View>
       </View>
@@ -76,7 +76,7 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
   const renderSummary = (): React.JSX.Element => {
     const subtotal = getTotalPrice();
     const tax = subtotal * 0.1; // 10% tax
-    const shipping = cartItems.length > 0 ? 9.99 : 0;
+    const shipping = cartItems.length > 0 ? 150 : 0;
     const total = subtotal + tax + shipping;
 
     return (
@@ -95,7 +95,7 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
             Subtotal
           </Text>
           <Text style={[styles.summaryValue, { color: theme.text }]}>
-            ${subtotal.toFixed(2)}
+            PHP {subtotal.toFixed(2)}
           </Text>
         </View>
 
@@ -104,7 +104,7 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
             Tax (10%)
           </Text>
           <Text style={[styles.summaryValue, { color: theme.text }]}>
-            ${tax.toFixed(2)}
+            PHP {tax.toFixed(2)}
           </Text>
         </View>
 
@@ -113,7 +113,7 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
             Shipping
           </Text>
           <Text style={[styles.summaryValue, { color: theme.text }]}>
-            ${shipping.toFixed(2)}
+            PHP {shipping.toFixed(2)}
           </Text>
         </View>
 
@@ -122,7 +122,7 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
         <View style={styles.summaryRow}>
           <Text style={[styles.totalLabel, { color: theme.text }]}>Total</Text>
           <Text style={[styles.totalValue, { color: theme.primary }]}>
-            ${total.toFixed(2)}
+            PHP {total.toFixed(2)}
           </Text>
         </View>
       </View>

@@ -9,7 +9,7 @@ export const products = [
   {
     id: 1,
     name: "Snack Series",
-    price: 15,
+    price: 500,
     description:
       "Just like dining at a retro American diner, Sonny Angel brings joy to every mealtime moment.",
     image: snackImg,
@@ -17,7 +17,7 @@ export const products = [
   {
     id: 2,
     name: "Gifts of Love Series",
-    price: 20,
+    price: 800,
     description:
       "The Gifts of Love series is a message of “I love you!” from Sonny Angel and represents his daily gratitude and affection.",
     image: loveImg,
@@ -25,7 +25,7 @@ export const products = [
   {
     id: 3,
     name: "Pumpkin Patch Series",
-    price: 20,
+    price: 600,
     description:
       "Sonny Angel dons colorful, playful pumpkin costumes in the brand new Pumpkin Patch Series.",
     image: pumpkinImg,
@@ -33,7 +33,7 @@ export const products = [
   {
     id: 4,
     name: "Dog Time Series",
-    price: 20,
+    price: 600,
     description:
       "RUFF! Make Every Moment More Playful with the Sonny Angel Dog Time Series!",
     image: dogImg,
@@ -41,14 +41,14 @@ export const products = [
   {
     id: 5,
     name: "Santa's Little Helper Series",
-    price: 30,
+    price: 800,
     description: "Get Ready for Christmas Celebrations with Sonny Angel.",
     image: santaImg,
   },
   {
     id: 6,
     name: "Cat Life Series",
-    price: 20,
+    price: 600,
     description: "Add fun to every day with the Sonny Angel Cat Life series.",
     image: catImg,
   },
