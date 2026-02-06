@@ -14,7 +14,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useCart } from '../context/CartContext';
 import { useTheme } from '../context/ThemeContext';
-import { products } from '../data/products';
+import { products } from '../products';
 import type { RootStackParamList, Product } from '../types/index';
 import { styles } from '../styles/HomeScreen.styles';
 

@@ -1,9 +1,9 @@
-import snackImg from '../assets/SNACK.png';
-import loveImg from '../assets/LOVE.png';
-import pumpkinImg from '../assets/PUMPKIN.png';
-import dogImg from '../assets/DOG.png';
-import santaImg from '../assets/SANTA.png';
-import catImg from '../assets/CAT.png';
+import snackImg from './assets/SNACK.png';
+import loveImg from './assets/LOVE.png';
+import pumpkinImg from './assets/PUMPKIN.png';
+import dogImg from './assets/DOG.png';
+import santaImg from './assets/SANTA.png';
+import catImg from './assets/CAT.png';
 
 export const products = [
   {
