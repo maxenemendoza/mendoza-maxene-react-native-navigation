@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
@@ -8,14 +8,17 @@ import {
   StatusBar,
   Alert,
   ListRenderItem,
-} from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useCart } from '../context/CartContext';
-import { useTheme } from '../context/ThemeContext';
-import type { RootStackParamList, CartItem } from '../types/index';
-import { styles } from '../styles/CheckoutScreen.styles';
+} from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useCart } from "../context/CartContext";
+import { useTheme } from "../context/ThemeContext";
+import type { RootStackParamList, CartItem } from "../types/index";
+import { styles } from "../styles/CheckoutScreen.styles";
 
-type CheckoutScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Checkout'>;
+type CheckoutScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Checkout"
+>;
 
 interface CheckoutScreenProps {
   navigation: CheckoutScreenNavigationProp;
@@ -27,26 +30,33 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
 
   const handleCheckout = (): void => {
     Alert.alert(
-      'Checkout Successful',
-      'Thank you for your purchase!',
+      "Checkout Successful",
+      "Thank you for your purchase!",
       [
         {
-          text: 'OK',
+          text: "OK",
           onPress: () => {
             clearCart();
-            navigation.navigate('Home');
+            navigation.navigate("Home");
           },
         },
       ],
-      { cancelable: false }
+      { cancelable: false },
     );
   };
 
   const renderCheckoutItem: ListRenderItem<CartItem> = ({ item }) => (
-    <View style={[styles.checkoutItem, { backgroundColor: theme.cardBackground, borderColor: theme.border }]}>
+    <View
+      style={[
+        styles.checkoutItem,
+        { backgroundColor: theme.cardBackground, borderColor: theme.border },
+      ]}
+    >
       <View style={styles.itemRow}>
         <View style={styles.itemInfo}>
-          <Text style={[styles.itemName, { color: theme.text }]}>{item.name}</Text>
+          <Text style={[styles.itemName, { color: theme.text }]}>
+            {item.name}
+          </Text>
           <Text style={[styles.itemQuantity, { color: theme.textSecondary }]}>
             Qty: {item.quantity}
           </Text>
@@ -70,50 +80,81 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
     const total = subtotal + tax + shipping;
 
     return (
-      <View style={[styles.summaryCard, { backgroundColor: theme.cardBackground, borderColor: theme.border }]}>
-        <Text style={[styles.summaryTitle, { color: theme.text }]}>Order Summary</Text>
-        
+      <View
+        style={[
+          styles.summaryCard,
+          { backgroundColor: theme.cardBackground, borderColor: theme.border },
+        ]}
+      >
+        <Text style={[styles.summaryTitle, { color: theme.text }]}>
+          Order Summary
+        </Text>
+
         <View style={styles.summaryRow}>
-          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>Subtotal</Text>
-          <Text style={[styles.summaryValue, { color: theme.text }]}>${subtotal.toFixed(2)}</Text>
+          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>
+            Subtotal
+          </Text>
+          <Text style={[styles.summaryValue, { color: theme.text }]}>
+            ${subtotal.toFixed(2)}
+          </Text>
         </View>
-        
+
         <View style={styles.summaryRow}>
-          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>Tax (10%)</Text>
-          <Text style={[styles.summaryValue, { color: theme.text }]}>${tax.toFixed(2)}</Text>
+          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>
+            Tax (10%)
+          </Text>
+          <Text style={[styles.summaryValue, { color: theme.text }]}>
+            ${tax.toFixed(2)}
+          </Text>
         </View>
-        
+
         <View style={styles.summaryRow}>
-          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>Shipping</Text>
-          <Text style={[styles.summaryValue, { color: theme.text }]}>${shipping.toFixed(2)}</Text>
+          <Text style={[styles.summaryLabel, { color: theme.textSecondary }]}>
+            Shipping
+          </Text>
+          <Text style={[styles.summaryValue, { color: theme.text }]}>
+            ${shipping.toFixed(2)}
+          </Text>
         </View>
-        
+
         <View style={[styles.divider, { backgroundColor: theme.border }]} />
-        
+
         <View style={styles.summaryRow}>
           <Text style={[styles.totalLabel, { color: theme.text }]}>Total</Text>
-          <Text style={[styles.totalValue, { color: theme.primary }]}>${total.toFixed(2)}</Text>
+          <Text style={[styles.totalValue, { color: theme.primary }]}>
+            ${total.toFixed(2)}
+          </Text>
         </View>
       </View>
     );
   };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        barStyle={isDarkMode ? "light-content" : "dark-content"}
         backgroundColor={theme.background}
       />
-      
+
       {/* Header */}
       <View style={[styles.header, { borderBottomColor: theme.border }]}>
         <TouchableOpacity
-          style={[styles.backButton, { backgroundColor: theme.cardBackground, borderColor: theme.border }]}
+          style={[
+            styles.backButton,
+            {
+              backgroundColor: theme.cardBackground,
+              borderColor: theme.border,
+            },
+          ]}
           onPress={() => navigation.goBack()}
         >
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
-        <Text style={[styles.headerTitle, { color: theme.text }]}>Checkout</Text>
+        <Text style={[styles.headerTitle, { color: theme.text }]}>
+          Checkout
+        </Text>
         <View style={styles.placeholder} />
       </View>
 
@@ -123,14 +164,24 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContent}
         ListHeaderComponent={
-          <Text style={[styles.sectionTitle, { color: theme.text }]}>Order Items</Text>
+          <Text style={[styles.sectionTitle, { color: theme.text }]}>
+            Order Items
+          </Text>
         }
         ListFooterComponent={renderSummary()}
         showsVerticalScrollIndicator={false}
       />
 
       {/* Checkout Button */}
-      <View style={[styles.footer, { backgroundColor: theme.cardBackground, borderTopColor: theme.border }]}>
+      <View
+        style={[
+          styles.footer,
+          {
+            backgroundColor: theme.cardBackground,
+            borderTopColor: theme.border,
+          },
+        ]}
+      >
         <TouchableOpacity
           style={[styles.checkoutButton, { backgroundColor: theme.primary }]}
           onPress={handleCheckout}

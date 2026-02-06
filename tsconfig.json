@@ -17,12 +17,6 @@
       "*": ["*", "types/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
