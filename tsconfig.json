@@ -1,33 +1,26 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-    "target": "esnext",
-    "module": "node16",
-    "lib": ["esnext"],
-    "jsx": "react-native",
-    "noEmit": true,
-    "isolatedModules": true,
     "esModuleInterop": true,
+    "jsx": "react-native",
+    "lib": ["es2017"],
+    "moduleResolution": "node",
+    "noEmit": true,
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node16",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["*", "types/*"]
+    }
   },
-  "extends": "expo/tsconfig.base",
   "include": [
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
